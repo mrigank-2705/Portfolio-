@@ -1,0 +1,129 @@
+.techstack {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  margin: auto;
+  margin-top: 120px;
+  margin-bottom: 80px;
+  padding: 80px 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--backgroundColor);
+  z-index: 10;
+  clear: both;
+}
+
+.techstack-title {
+  font-size: 70px;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 5;
+}
+
+.techstack-title > span {
+  color: var(--accentColor);
+}
+
+.tech-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  z-index: 2;
+}
+
+.tech-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.skills-grid-container {
+  width: var(--cWidth);
+  max-width: 1200px;
+  margin: 20px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  z-index: 5;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.skill-category-card {
+  background: rgba(20, 16, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px 24px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 191, 255, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(120, 80, 220, 0.25);
+}
+
+.skill-category-card h3 {
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accentColor);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.skill-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e5e5e5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(200, 191, 255, 0.15);
+  border-color: var(--accentColor);
+  color: #fff;
+}
+
+.cert-card {
+  border-color: rgba(168, 85, 247, 0.25);
+  background: rgba(28, 18, 36, 0.75);
+}
+
+.cert-tag {
+  background: rgba(147, 51, 234, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #e9d5ff;
+}
+
+.cert-tag:hover {
+  background: rgba(168, 85, 247, 0.28);
+  border-color: #c084fc;
+}
+
+@media screen and (max-width: 900px) {
+  .techstack-title {
+    font-size: 40px;
+  }
+  .tech-canvas-wrapper {
+    height: 360px;
+  }
+  .skills-grid-container {
+    grid-template-columns: 1fr;
+  }
+}

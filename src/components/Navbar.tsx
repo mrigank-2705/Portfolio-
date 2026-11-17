@@ -13,44 +13,58 @@ const Navbar = () => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
+      smooth: 1.5,
+      speed: 1.5,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
     });
 
     smoother.scrollTop(0);
-    smoother.paused(true);
+    smoother.paused(false);
 
-    let links = document.querySelectorAll(".header ul a");
+    const links = document.querySelectorAll(".header ul a, .navbar-title");
     links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
+      const element = elem as HTMLAnchorElement;
       element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
+        const target = element.getAttribute("data-href");
+        if (target) {
           e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+          if (target === "#top" || target === "#landingDiv") {
+            smoother.scrollTo(0, true);
+          } else {
+            smoother.scrollTo(target, true, "top top");
+          }
         }
       });
     });
-    window.addEventListener("resize", () => {
+
+    const handleResize = () => {
       ScrollSmoother.refresh(true);
-    });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
+        <a
+          href="#landingDiv"
+          data-href="#landingDiv"
+          className="navbar-title"
+          data-cursor="disable"
+        >
+          MRIGANK
         </a>
         <a
-          href="mailto:example@mail.com"
+          href="mailto:mrigank2705@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
         >
-          example@mail.com
+          mrigank2705@gmail.com
         </a>
         <ul>
           <li>
@@ -60,7 +74,12 @@ const Navbar = () => {
           </li>
           <li>
             <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
+              <HoverLinks text="PROJECTS" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#techstack" href="#techstack">
+              <HoverLinks text="SKILLS" />
             </a>
           </li>
           <li>

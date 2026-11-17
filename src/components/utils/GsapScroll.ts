@@ -133,6 +133,9 @@ export function setCharTimeline(
 }
 
 export function setAllTimeline() {
+  const careerSection = document.querySelector(".career-section");
+  if (!careerSection) return;
+
   const careerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".career-section",

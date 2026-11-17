@@ -26,3 +26,6 @@ dist-ssr
 
 backup/
 .env
+# Local backup and generated TypeScript build metadata
+_nextjs_aiml_backup/
+*.tsbuildinfo

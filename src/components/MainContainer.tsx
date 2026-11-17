@@ -1,6 +1,5 @@
 import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
 import About from "./About";
-import Career from "./Career";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
 import Landing from "./Landing";
@@ -41,13 +40,16 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <Landing>{!isDesktopView && children}</Landing>
             <About />
             <WhatIDo />
-            <Career />
             <Work />
-            {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
-              </Suspense>
-            )}
+            <Suspense
+              fallback={
+                <div style={{ textAlign: "center", padding: "60px" }}>
+                  Loading Skills...
+                </div>
+              }
+            >
+              <TechStack />
+            </Suspense>
             <Contact />
           </div>
         </div>
