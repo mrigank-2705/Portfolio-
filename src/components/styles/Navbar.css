@@ -41,9 +41,9 @@
   font-weight: 500;
 }
 .navbar-title {
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2px;
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: -1px;
 }
 .header ul li a.active-nav-link {
   color: var(--accentColor) !important;

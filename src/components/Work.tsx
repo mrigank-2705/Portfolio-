@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const projects = [
   {
@@ -47,32 +47,44 @@ const projects = [
 
 const Work = () => {
   useGSAP(() => {
-    const flex = document.querySelector(".work-flex") as HTMLElement;
+    const section = document.querySelector(".work-section") as HTMLElement | null;
+    const flex = section?.querySelector(".work-flex") as HTMLElement | null;
+    if (!section || !flex || window.innerWidth <= 1025) return;
 
     function getScrollWidth() {
-      if (!flex) return 0;
-      return Math.max(0, flex.scrollWidth - window.innerWidth + 160);
+      const currentX = Number(gsap.getProperty(flex, "x")) || 0;
+      const untransformedLeft = flex.getBoundingClientRect().left - currentX;
+      return Math.max(
+        0,
+        untransformedLeft + flex.scrollWidth - section.clientWidth
+      );
     }
+
+    if (getScrollWidth() === 0) return;
 
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: ".work-section",
+        trigger: section,
         start: "top top",
         end: () => `+=${getScrollWidth()}`,
         scrub: 1,
         pin: true,
-        anticipatePin: 1,
+        anticipatePin: 0,
         invalidateOnRefresh: true,
         id: "work",
       },
     });
 
-    timeline.to(".work-flex", {
+    timeline.to(flex, {
       x: () => -getScrollWidth(),
       ease: "none",
     });
 
+    const refreshAfterLayout = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refreshAfterLayout);
+
     return () => {
+      window.removeEventListener("load", refreshAfterLayout);
       timeline.kill();
       ScrollTrigger.getById("work")?.kill();
     };

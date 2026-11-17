@@ -57,7 +57,7 @@ const Navbar = () => {
           className="navbar-title"
           data-cursor="disable"
         >
-          MRIGANK
+          MJ
         </a>
         <a
           href="mailto:mrigank2705@gmail.com"

@@ -6,10 +6,9 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Motivated AI/ML undergraduate passionate about applying machine
-          learning, LLMs, and Python-based solutions to real-world problems.
-          Seeking opportunities to deepen technical expertise and contribute to
-          impactful projects.
+          I turn bold ideas into intelligent products—blending creative design,
+          thoughtful engineering, and practical AI to make technology feel
+          useful, intuitive, and human.
         </p>
       </div>
     </div>
