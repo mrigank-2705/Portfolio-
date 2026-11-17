@@ -47,9 +47,18 @@ const projects = [
 
 const Work = () => {
   useGSAP(() => {
-    const section = document.querySelector(".work-section") as HTMLElement | null;
-    const flex = section?.querySelector(".work-flex") as HTMLElement | null;
-    if (!section || !flex || window.innerWidth <= 1025) return;
+    const sectionElement = document.querySelector(".work-section");
+    const flexElement = sectionElement?.querySelector(".work-flex");
+    if (
+      !(sectionElement instanceof HTMLElement) ||
+      !(flexElement instanceof HTMLElement) ||
+      window.innerWidth <= 1025
+    ) {
+      return;
+    }
+
+    const section = sectionElement;
+    const flex = flexElement;
 
     function getScrollWidth() {
       const currentX = Number(gsap.getProperty(flex, "x")) || 0;
