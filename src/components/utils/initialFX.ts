@@ -1,5 +1,5 @@
-import { SplitText } from "gsap-trial/SplitText";
-import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
+import { SplitText } from "gsap/SplitText";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import gsap from "gsap";
 
 export function initialFX() {
